@@ -69,7 +69,7 @@ public class EmployeeController {
         employeeService.deleteEmployee(id);
         return new ResponseEntity<>(new ApiDataResponse<>(
                 true,
-                "Cập nhật toàn bộ thông tin nhân viên thành công!",
+                "Xoá nhân viên thành công!",
                 null,
                 HttpStatus.NO_CONTENT
         ), HttpStatus.NO_CONTENT);

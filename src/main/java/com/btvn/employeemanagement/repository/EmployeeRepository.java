@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 @Repository
 public class EmployeeRepository {
@@ -38,8 +39,10 @@ public class EmployeeRepository {
     }
 
     public Employee update(Employee employee) {
-        employees.remove(employee);
-        employees.add(employee);
+        IntStream.range(0, employees.size())
+                .filter(i -> employees.get(i).getId().equals(employee.getId()))
+                .findFirst()
+                .ifPresent(i -> employees.set(i, employee));
         return employee;
     }
 
